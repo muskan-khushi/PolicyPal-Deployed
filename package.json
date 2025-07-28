@@ -1,4 +1,20 @@
 {
+  "name": "policypal",
+  "version": "1.0.0",
+  "description": "An LLM Trained Bot to resolve all your policy-related queries",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rupali2507/PolicyPal.git"
+  },
+  "author": "Rupali, Shanvi, Muskan, Prisha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rupali2507/PolicyPal/issues"
+  },
+  "homepage": "https://github.com/Rupali2507/PolicyPal#readme",
   "devDependencies": {
     "parcel": "^2.15.4"
   },
