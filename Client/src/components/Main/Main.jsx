@@ -1,6 +1,5 @@
 import React from "react";
 import "./Main.css";
-import { assets } from "../../assets/assets";
 
 const Main = () => {
     return(
@@ -22,8 +21,6 @@ const Main = () => {
                     <div className="search-box">
                         <input type="text" placeholder="Enter prompt here"/>
                         <div>
-                            <img src={assets.gallery_icon} alt="" />
-                            <img src={assets.mic_icon} alt="" />
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1v0jrV_x4un0y3T36nyVRHKwNSjuHg2oIiQ&s" alt="" />
                         </div>
                     </div>
