@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import connectDB from "./config/db.js";
+import chatRoutes from "./Routes/ChatRoutes.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 connectDB();
@@ -23,6 +24,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.send("Welcome to the PolicyPal Server!");
 });
+app.use("/api", chatRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
