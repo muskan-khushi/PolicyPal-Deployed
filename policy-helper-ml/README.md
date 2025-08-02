@@ -1,69 +1,130 @@
-# Policy Helper ML Module 🤖
 
-This module uses the Google Gemini API to check if a user query complies with a given policy document (PDF).
 
------
+````markdown
+# 🧠 Policy Helper — ML Module for Insurance Query Evaluation
 
-## Setup Instructions
+This module uses Google's **Gemini 1.5 API** to evaluate user queries against a health insurance policy PDF. It checks for waiting periods, exclusions, and benefit coverage, returning a structured JSON decision.
 
-Follow these steps to get the module running on your local machine.
+---
 
-### 1\. Install Dependencies
+## ⚙️ Setup Instructions
 
-Navigate into this directory in your terminal and run the following command to install the required Python libraries:
+### 1. Install Dependencies
+
+Use the following command to install necessary Python libraries:
 
 ```bash
 pip install google-generativeai PyMuPDF
+````
+
+---
+
+### 2. Set Up the Google API Key
+
+This project securely accesses the Gemini model using an **environment variable** named `GOOGLE_API_KEY`.
+
+You **must set this variable every time** before running the script (or persist it).
+
+#### 🔐 Option A: PowerShell (most common on Windows)
+
+If you're using **PowerShell**, run:
+
+```powershell
+$env:GOOGLE_API_KEY = "your-api-key-here"
 ```
 
-### 2\. Set the API Key
+Then, in the **same terminal**, run:
 
-This project uses an **environment variable** to handle the API key securely. This means the key is stored on your local machine for your current terminal session, not in the code.
+```powershell
+python policy-checker.py
+```
 
-**You must set this variable before running the script.**
+---
 
-#### On macOS or Linux:
+#### 🔐 Option B: Command Prompt (CMD)
 
-Open your terminal and run this command, pasting your key in place of the placeholder.
+If using classic Command Prompt:
+
+```cmd
+set GOOGLE_API_KEY=your-api-key-here
+python policy-checker.py
+```
+
+---
+
+#### 🔐 Option C: macOS / Linux Terminal
 
 ```bash
-export GOOGLE_API_KEY="PASTE_YOUR_API_KEY_HERE"
+export GOOGLE_API_KEY="your-api-key-here"
+python policy-checker.py
 ```
 
-#### On Windows (Command Prompt):
+> These methods only persist for the **current terminal session**. You’ll need to run them again next time unless you add them to a startup script.
 
-Open Command Prompt and run this command, pasting your key in place of the placeholder.
+---
+
+## ✅ Run the Module
+
+Make sure your policy PDF is named `hackathon-policy.pdf` and located in the same directory as `policy-checker.py`.
+
+Then run:
 
 ```bash
-set GOOGLE_API_KEY="PASTE_YOUR_API_KEY_HERE"
+python policy-checker.py
 ```
 
------
+The script will:
 
-## How to Test
+* Load the policy
+* Submit 3 sample queries
+* Print structured AI responses
 
-After completing the setup steps, you can test the module by running:
+---
 
-```bash
-python policy_checker.py
-```
+## 🔧 Backend Integration
 
-This will use the `hackathon-policy.pdf` file in this directory and run the sample test cases at the bottom of the script.
-
------
-
-## How to Use in the Backend
-
-The backend can import and use the functions from `policy_checker.py`.
-
-  - `extract_text_from_pdf(pdf_path)`: Reads all text from a PDF.
-  - `get_policy_decision(policy_text, user_query)`: Analyzes the text and query.
-
-**Example backend usage:**
+You can reuse the ML functions in your backend like this:
 
 ```python
 from policy_checker import extract_text_from_pdf, get_policy_decision
 
-policy_text = extract_text_from_pdf("path/to/user_uploaded.pdf")
-decision = get_policy_decision(policy_text, "user query from frontend")
+policy_text = extract_text_from_pdf("uploads/user_policy.pdf")
+decision = get_policy_decision(policy_text, "I want physiotherapy after my surgery")
 ```
+
+---
+
+## 📄 Available Functions
+
+| Function                           | Description                                              |
+| ---------------------------------- | -------------------------------------------------------- |
+| `extract_text_from_pdf(path)`      | Extracts raw text from the PDF                           |
+| `get_policy_decision(text, query)` | Sends query + policy to Gemini and returns JSON decision |
+
+---
+
+## 📁 Project Structure
+
+```
+policy-helper-ml/
+│
+├── policy-checker.py        # Core ML logic
+├── hackathon-policy.pdf     # Sample policy document
+├── README.md                # You're here
+└── requirements.txt         # Optional dependencies list
+```
+
+---
+
+## 💡 Sample Output
+
+```json
+{
+  "status": "LIKELY APPROVED (NEEDS PRE-AUTHORIZATION)",
+  "reason": "Cataract surgery after 1.5 years is a covered benefit, but requires prior approval from the insurer."
+}
+```
+
+
+
+
