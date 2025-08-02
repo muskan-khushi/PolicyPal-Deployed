@@ -35,6 +35,7 @@
 .input-box {
   display: flex;
   gap: 10px;
+  height: 50px;
 }
 
 .input-box input {
@@ -52,6 +53,7 @@
   color: white;
   border: none;
   cursor: pointer;
+  width: 10%;
 }
 
 
