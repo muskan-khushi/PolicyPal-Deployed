@@ -11,10 +11,6 @@ const Main = () => {
     <div className="main">
       <div className="nav">
         <p>PolicyPal</p>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/4775/4775486.png"
-          alt=""
-        />
       </div>
 
       <div className="main-container">
