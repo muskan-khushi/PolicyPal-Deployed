@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to handle CORS
 app.use(cors());
+
 // Middleware to serve static files
 app.use(express.static("public"));
 

@@ -1,10 +1,6 @@
 import Chat from "../Models/ChatModels.js";
 import fetch from "node-fetch";
 
-function simulatedLLMResponse(messageText) {
-  return `You said: ${messageText}. Our System will now check your eligibility.`;
-}
-
 export async function handleAsk(req, res) {
   const { sessionId, message } = req.body;
 
