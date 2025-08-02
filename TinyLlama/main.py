@@ -19,4 +19,4 @@ def ask_question(q: str = Query(..., alias="query")):
     relevant_chunks = store.search(q)
     context = "\n".join(relevant_chunks)
     answer = llm.generate_answer(context, q)
-    return {"query": q, "answer": answer}
+    return {"query": q, "reply": answer}

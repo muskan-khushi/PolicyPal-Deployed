@@ -26,14 +26,16 @@ export async function handleAsk(req, res) {
       text: userMessage.text,
     });
 
-    const aiResponse = await fetch("http://localhost:8000/api/policy-check", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query: userMessage.text }),
-    });
-
+    // const aiResponse = await fetch("http://localhost:8000/api/policy-check", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ query: userMessage.text }),
+    // });
+    
+    const queryParam = encodeURIComponent(userMessage.text);
+    const aiResponse = await fetch(`http://localhost:8000/ask?query=${queryParam}`);
     const aiResult = await aiResponse.json();
 
     let botReply;
