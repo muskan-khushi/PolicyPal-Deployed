@@ -4,6 +4,9 @@
   justify-content: space-between;
   padding: 20px;
   height: 80%;
+  position: fixed;
+  top: 125px;
+  width: 60%;
 }
 
 .messages {
@@ -37,15 +40,21 @@
 .input-box input {
   flex-grow: 1;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 50px;
   border: 1px solid #ccc;
+  padding-left: 15px;
 }
 
 .input-box button {
   padding: 10px 15px;
-  border-radius: 6px;
-  background-color: #007bff;
+  border-radius: 50px;
+  background-color:#3b6d2e;
   color: white;
   border: none;
   cursor: pointer;
+}
+
+
+.input-box button:hover{
+  background-color: #89d877;
 }

@@ -3,7 +3,7 @@ import "./Sidebar.css";
 
 const Sidebar = () => {
 
-    const [extended, setExtended] = useState(true);
+    const [extended, setExtended] = useState(false);
 
     return (
         <div className="sidebar">

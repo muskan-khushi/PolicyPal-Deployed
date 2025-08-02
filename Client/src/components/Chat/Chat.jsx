@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 import "./Chat.css";
 
-const Chat = ({ sessionId }) => {
+const Chat = ({ sessionId, messages, setMessages }) => {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
