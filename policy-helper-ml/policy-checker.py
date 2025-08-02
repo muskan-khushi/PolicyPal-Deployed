@@ -59,7 +59,7 @@ def get_policy_decision(policy_doc: str, user_query: str) -> dict:
         cleaned_response = response.text.strip().replace("```json", "").replace("```", "").strip()
         return json.loads(cleaned_response)
     except Exception as e:
-        print(f"!!! ERROR: Could not get a response from the AI. Check your API key. Error details: {e}")
+        print(f"ERROR: Could not get a response from the AI. Check your API key. Error details: {e}")
         return {
             "status": "ERROR",
             "reason": "Failed to process the request due to a technical issue."
@@ -74,20 +74,27 @@ if __name__ == "__main__":
     policy_text = extract_text_from_pdf(pdf_file_path)
 
     if policy_text:
-        print("✅ PDF text extracted successfully!")
+        print("PDF text extracted successfully!")
         
         print("\n--- Step 2: Running test queries against the policy ---")
         
-        # Test Case 1
-        query1 = "I want to request 10 days of vacation starting three weeks from now."
+        # test Case 1
+        query1 = "I had an accident and was hospitalized for 3 days for a leg fracture surgery."
         print(f"\nSubmitting Query: '{query1}'")
         result1 = get_policy_decision(policy_text, query1)
         print("AI Response:", result1)
 
-        # Test Case 2
-        query2 = "I need to take my vacation starting tomorrow."
+        # test Case 2
+        query2 = "I have had this policy for 1.5 years and need to undergo cataract surgery."
         print(f"\nSubmitting Query: '{query2}'")
         result2 = get_policy_decision(policy_text, query2)
         print("AI Response:", result2)
+
+        #test case 3
+        query3 = "I want to claim expenses for my physiotherapy sessions."
+        print(f"\nSubmitting Query: '{query3}'")
+        result3 = get_policy_decision(policy_text, query3)
+        print("AI Response:", result3)
+
     else:
-        print("❌ Could not proceed. Please check the PDF file path and name.")
+        print("Could not proceed. Please check the PDF file path and name.")
