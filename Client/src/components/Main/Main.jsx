@@ -2,6 +2,7 @@ import React from "react";
 import "./Main.css";
 import Chat from "../Chat/Chat";
 import { useState } from "react";
+import { Link } from "react-router";
 
 const Main = () => {
   const sessionId = "session_" + Date.now();
@@ -11,6 +12,11 @@ const Main = () => {
     <div className="main">
       <div className="nav">
         <p>PolicyPal</p>
+        
+        <div className="auth-opt">
+          <Link to="/auth"><button>Sign Up</button></Link>
+          <Link to="/auth"><button>Login</button></Link>
+        </div>
       </div>
 
       <div className="main-container">

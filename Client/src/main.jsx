@@ -1,8 +1,7 @@
 import './index.css'
 import ReactDOM from 'react-dom/client'
 import ChatScreen from './ChatScreen.jsx'
-import Login from "./components/Login/Login.jsx"
-import SignUp from "./components/SignUp/SignUp.jsx"
+import Auth from "./components/Auth/Auth.jsx"
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router';
 
 const App = () => {
@@ -23,15 +22,10 @@ const appRouter = createBrowserRouter([
           element: <ChatScreen />
         },
         {
-          path: "/login",
-          element: <Login />
-        },
-        {
-          path: "/signup",
-          element: <SignUp />
+          path: "/auth",
+          element: <Auth />
         }
-      ],
-      errorElement: <Error />
+      ]
     },
 ])
 
