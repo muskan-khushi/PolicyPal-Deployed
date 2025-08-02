@@ -1,4 +1,5 @@
 import Chat from "../Models/ChatModels.js";
+import fetch from "node-fetch";
 
 function simulatedLLMResponse(messageText) {
   return `You said: ${messageText}. Our System will now check your eligibility.`;
@@ -29,7 +30,28 @@ export async function handleAsk(req, res) {
       text: userMessage.text,
     });
 
-    const botReply = simulatedLLMResponse(userMessage.text);
+    const aiResponse = await fetch("http://localhost:8000/api/policy-check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query: userMessage.text }),
+    });
+
+    const aiResult = await aiResponse.json();
+
+    let botReply;
+
+    if (aiResult.reply) {
+      botReply = aiResult.reply;
+    } else if (aiResult.status && aiResult.reason) {
+      // fallback if API changes later
+      botReply = `${aiResult.status}: ${aiResult.reason}`;
+    } else if (aiResult.error) {
+      botReply = `Error from AI service: ${aiResult.error}`;
+    } else {
+      botReply = "Sorry, something went wrong processing your request.";
+    }
 
     chat.messages.push({
       role: "bot",

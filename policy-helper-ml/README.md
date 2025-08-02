@@ -2,7 +2,7 @@
 
 This module uses the Google Gemini API to check if a user query complies with a given policy document (PDF).
 
------
+---
 
 ## Setup Instructions
 
@@ -38,32 +38,28 @@ Open Command Prompt and run this command, pasting your key in place of the place
 set GOOGLE_API_KEY="PASTE_YOUR_API_KEY_HERE"
 ```
 
------
+---
+
+### on Windows (PowerShell):
+
+Open PowerShell and run this command, pasting your key in place of the placeholder.
+
+```powershell
+$env:GOOGLE_API_KEY="your_actual_api_key_here"
+```
 
 ## How to Test
 
 After completing the setup steps, you can test the module by running:
 
 ```bash
-python policy_checker.py
+python policy-checker.py
 ```
 
 This will use the `hackathon-policy.pdf` file in this directory and run the sample test cases at the bottom of the script.
 
------
+---
 
-## How to Use in the Backend
+```
 
-The backend can import and use the functions from `policy_checker.py`.
-
-  - `extract_text_from_pdf(pdf_path)`: Reads all text from a PDF.
-  - `get_policy_decision(policy_text, user_query)`: Analyzes the text and query.
-
-**Example backend usage:**
-
-```python
-from policy_checker import extract_text_from_pdf, get_policy_decision
-
-policy_text = extract_text_from_pdf("path/to/user_uploaded.pdf")
-decision = get_policy_decision(policy_text, "user query from frontend")
 ```
