@@ -62,7 +62,8 @@ export async function handleAsk(req, res) {
 
     return res.json({ reply: botReply });
   } catch (error) {
-    console.error("Error in handleAsk:", error);
+    console.error("Error in handleAsk:", error.message, error.stack);
+
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
