@@ -21,11 +21,7 @@ export const register = async (req, res) => {
         .status(400)
         .json({ message: "Password must be at least 6 characters" });
     }
-    if (!/^[a-zA-Z0-9]+$/.test(username)) {
-      return res
-        .status(400)
-        .json({ message: "Username can only contain alphanumeric characters" });
-    }
+
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
       return res.status(400).json({ message: "Invalid email format" });
     }
@@ -34,7 +30,12 @@ export const register = async (req, res) => {
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });
     }
-    const newUser = await User.create({ username, email, password });
+    const newUser = await User.create({
+      username,
+      email,
+      password,
+      confirm_password,
+    });
 
     const token = generateToken(newUser._id);
     res.status(201).json({
