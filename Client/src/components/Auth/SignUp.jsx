@@ -26,7 +26,7 @@ const SignUp = () => {
       } else {
         alert(data.message || "Regsistration Failed");
       }
-    } catch {
+    } catch (err) {
       console.error(err);
       alert("Server error");
     }
