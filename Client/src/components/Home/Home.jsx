@@ -11,7 +11,7 @@ const HomePage = () => {
         <p className="logo">PolicyPal</p>
         <div className="auth-buttons">
           <button className="btn btn-outline" onClick={() => Navigate("/auth")}>
-            Sign In
+            Sign Up
           </button>
           <button className="btn btn-primary" onClick={() => Navigate("/auth")}>
             Log In

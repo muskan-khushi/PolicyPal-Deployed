@@ -1,10 +1,3 @@
-body{
-  background-image: url('background.jpg'); /* path is relative to public folder */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 :root {
   --primary-dark: #3b6d2e;
   --primary-medium: #5a9649;
@@ -21,19 +14,23 @@ body{
   align-items: center;     
   margin: auto;
   background-color: var(--background-color);
-  border-radius: 30px;
-  width: 25%;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18); /* Stronger shadow */
+  width: 100vw;
+  height: 100vh;
+  background-image: url(background.jpg); /* Place your image in the public folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .auth-card {
   background-color: var(--white);
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); 
   overflow: hidden;
   width: 100%;
   max-width: 420px;
   border: 1px solid #e0e0e0;
+  
 }
 
 .toggle-container {

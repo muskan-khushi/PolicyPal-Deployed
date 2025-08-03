@@ -94,17 +94,28 @@ body,
   align-items: center;
   padding: 3rem 1rem;
   text-align: center;
-  background-color: black;
-  background-image: url('background.jpg'); /* path is relative to public folder */
+  
+  background-image: url('homebgimg.jpg'); /* path is relative to public folder */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  
 }
 
 .main-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: white;
+  text-shadow: 6px 6px 6px 3px black;
+  font-weight: bolder;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to   { opacity: 1; transform: translateY(0);}
 }
 
 .main-content p {
@@ -112,6 +123,10 @@ body,
   font-size: 1.125rem;
   margin-bottom: 2rem;
   color: rgba(255, 255, 255, 0.679);
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
 }
 
 .large-btn {
@@ -123,6 +138,10 @@ body,
   border-radius: 30px;
   transition: all 0.3s ease;
   border: none;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
 }
 
 .large-btn:hover{
