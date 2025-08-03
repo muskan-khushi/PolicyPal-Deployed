@@ -12,15 +12,7 @@ const Main = () => {
     <div className="main">
       <div className="nav">
         <p>PolicyPal</p>
-
-        <div className="auth-opt">
-          <Link to="/auth">
-            <button>Sign Up</button>
-          </Link>
-          <Link to="/auth">
-            <button>Login</button>
-          </Link>
-        </div>
+        <img src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Dog-512.png" alt="" />
       </div>
 
       <div className="main-container">
