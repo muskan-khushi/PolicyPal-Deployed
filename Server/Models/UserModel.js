@@ -16,10 +16,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    confirm_password: {
-      type: String,
-      required: true,
-    },
   },
   { timestamps: true }
 );

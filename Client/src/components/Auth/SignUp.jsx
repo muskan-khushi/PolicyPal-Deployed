@@ -16,7 +16,7 @@ const SignUp = () => {
       const res = await fetch("http://localhost:5000/api/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password, confirm_password }),
+        body: JSON.stringify({ username, email, password }),
       });
       const data = await res.json();
 

@@ -7,15 +7,13 @@ const generateToken = (userId) => {
 };
 
 export const register = async (req, res) => {
-  const { username, email, password, confirm_password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
-    if (!username || !email || !password || !confirm_password) {
+    if (!username || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    if (password !== confirm_password) {
-      return res.status(400).json({ message: "Passwords do not match" });
-    }
+
     if (password.length < 6) {
       return res
         .status(400)
@@ -34,7 +32,6 @@ export const register = async (req, res) => {
       username,
       email,
       password,
-      confirm_password,
     });
 
     const token = generateToken(newUser._id);
