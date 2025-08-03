@@ -2,23 +2,23 @@ import Chat from "../Models/ChatModels.js";
 import fetch from "node-fetch";
 
 export async function handleAsk(req, res) {
-  const { sessionId, message } = req.body;
+  const userId = req.user._id;
+  const { message } = req.body;
 
-  if (
-    !sessionId ||
-    !message ||
-    !Array.isArray(message) ||
-    message.length === 0
-  ) {
+  if (!userId) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  if (!message || !Array.isArray(message) || message.length === 0) {
     return res.status(400).json({ error: "Invalid Input" });
   }
 
   const userMessage = message[message.length - 1];
 
   try {
-    let chat = await Chat.findOne({ sessionId });
+    let chat = await Chat.findOne({ userId });
     if (!chat) {
-      chat = new Chat({ sessionId, messages: [] });
+      chat = new Chat({ userId, messages: [] });
     }
 
     chat.messages.push({
@@ -33,9 +33,11 @@ export async function handleAsk(req, res) {
     //   },
     //   body: JSON.stringify({ query: userMessage.text }),
     // });
-    
+
     const queryParam = encodeURIComponent(userMessage.text);
-    const aiResponse = await fetch(`http://localhost:8000/ask?query=${queryParam}`);
+    const aiResponse = await fetch(
+      `http://localhost:8000/ask?query=${queryParam}`
+    );
     const aiResult = await aiResponse.json();
 
     let botReply;
@@ -58,7 +60,7 @@ export async function handleAsk(req, res) {
 
     await chat.save();
 
-    return res.json({ reply: botReply, sessionId: chat.sessionId });
+    return res.json({ reply: botReply });
   } catch (error) {
     console.error("Error in handleAsk:", error);
     return res.status(500).json({ error: "Internal Server Error" });

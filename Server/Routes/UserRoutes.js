@@ -1,8 +1,10 @@
 import express from "express";
-import { handleAsk } from "../Controllers/ChatController.js";
+import { register, login } from "../Controllers/UserController.js";
 import { authMiddleWare } from "../Middlewares/authMiddleware.js";
+
 const router = express.Router();
 
-router.post("/ask", authMiddleWare, handleAsk);
+router.post("/register", register);
+router.post("/login", login);
 
 export default router;

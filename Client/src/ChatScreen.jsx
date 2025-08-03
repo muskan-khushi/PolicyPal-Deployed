@@ -1,14 +1,13 @@
-import React from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Main from "./components/Main/Main";
 
-const App = () => {
-  return(
+const ChatScreen = () => {
+  return (
     <>
       <Sidebar />
       <Main />
     </>
-  )
+  );
 };
 
-export default App;
+export default ChatScreen;
