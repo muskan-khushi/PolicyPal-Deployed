@@ -1,3 +1,10 @@
+body{
+  background-image: url('background.jpg'); /* path is relative to public folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 :root {
   --primary-dark: #3b6d2e;
   --primary-medium: #5a9649;
@@ -13,8 +20,10 @@
   justify-content: center; 
   align-items: center;     
   margin: auto;
-  min-height: 100vh;         
   background-color: var(--background-color);
+  border-radius: 30px;
+  width: 25%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18); /* Stronger shadow */
 }
 
 .auth-card {
@@ -53,7 +62,7 @@
 }
 
 .toggle-button:not(.active):hover {
-    background-color: #dcedd8;
+    background-color: #d8e5d6;
 }
 
 /* --- Form Styles --- */
