@@ -7,6 +7,7 @@ body,
   margin: 0;
   padding: 0;
 }
+
 .homepage-container {
   height: 100vh;
   width: 100vw;
@@ -41,7 +42,7 @@ body,
   cursor: pointer;
   font-size: 1rem;
   padding: 0.5rem 1.25rem;
-  border-radius: 4px;
+  border-radius: 30px;
   border: 2px solid rgb(20, 83, 20);
   background-color: transparent;
   color: rgb(20, 83, 20);
@@ -52,6 +53,7 @@ body,
   background-color: rgb(20, 83, 20);
   color: white;
   border-color: rgb(20, 83, 20);
+  border-radius: 30px;
 }
 
 .auth-buttons button.btn-outline:hover {
@@ -60,11 +62,30 @@ body,
 }
 
 .auth-buttons button.btn-primary:hover {
-  background-color: #409d8a;
-  border-color: #1e40af;
+  background-color: rgb(29, 50, 27);
 }
 
 /* Main content area, centered */
+
+.main-content {
+  position: relative;
+  /* ...existing code... */
+}
+
+.main-content::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); /* black overlay, adjust alpha for opacity */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.main-content > * {
+  position: relative;
+  z-index: 2;
+}
+
 .main-content {
   flex-grow: 1;
   display: flex;
@@ -73,26 +94,40 @@ body,
   align-items: center;
   padding: 3rem 1rem;
   text-align: center;
+  background-color: black;
+  background-image: url('background.jpg'); /* path is relative to public folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .main-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: rgb(20, 83, 20);
+  color: white;
 }
 
 .main-content p {
   max-width: 600px;
   font-size: 1.125rem;
   margin-bottom: 2rem;
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.679);
 }
 
 .large-btn {
   font-size: 1.25rem;
   padding: 0.75rem 2rem;
-  color: rgb(54, 93, 50);
+  background-color: rgb(54, 93, 50);
+  color: white;
   cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.large-btn:hover{
+  background-color: rgb(29, 50, 27);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18); /* Add this line */
+  border-radius: 40px;
 }
 
 /* Footer styling */
@@ -100,8 +135,7 @@ body,
   width: 100%;
   text-align: center;
   padding: 1rem 0;
-  background-color: #ffffff;
-  border-top: 1px solid #e5e7eb;
-  color: #6b7280;
+  background-color: rgb(54, 93, 50);
+  color: white;
   font-size: 0.875rem;
 }
