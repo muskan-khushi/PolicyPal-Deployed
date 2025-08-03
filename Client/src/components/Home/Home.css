@@ -23,11 +23,11 @@ body,
 .navbar {
   width: 100%;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15); 
 }
 
 .logo {
@@ -117,11 +117,12 @@ body,
 .large-btn {
   font-size: 1.25rem;
   padding: 0.75rem 2rem;
-  background-color: rgb(54, 93, 50);
+  background-color: rgb(20, 83, 20);
   color: white;
   cursor: pointer;
   border-radius: 30px;
   transition: all 0.3s ease;
+  border: none;
 }
 
 .large-btn:hover{
@@ -135,7 +136,7 @@ body,
   width: 100%;
   text-align: center;
   padding: 1rem 0;
-  background-color: rgb(54, 93, 50);
+  background-color: rgb(20, 83, 20);
   color: white;
   font-size: 0.875rem;
 }
