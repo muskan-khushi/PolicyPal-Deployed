@@ -3,7 +3,6 @@ import "./Main.css";
 import Chat from "../Chat/Chat";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import NavBar from "../Nav/NavBar.jsx";
 
 const Main = () => {
   const sessionId = "session_" + Date.now();

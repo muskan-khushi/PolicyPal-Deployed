@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import ChatScreen from "./ChatScreen.jsx";
 import Home from "./components/Home/Home.jsx";
 import Auth from "./components/Auth/Auth.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 const App = () => {
@@ -24,7 +25,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/chat",
-        element: <ChatScreen />,
+        element: (
+          <PrivateRoute>
+            <ChatScreen />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/auth",
