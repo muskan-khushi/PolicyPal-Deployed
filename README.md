@@ -75,13 +75,6 @@ npm install
 
 Fire up each service **in its own terminal** for smooth operation!
 
-**Terminal 1: ML Service**
-```bash
-cd doc_qa_backend
-# Activate your environment!
-uvicorn app.main:app --reload
-# → Now running at: http://localhost:8000
-```
 
 **Terminal 2: Node.js Backend**
 ```bash
@@ -94,12 +87,12 @@ npm start
 ```bash
 cd Client
 npm start
-# → MAGIC at: http://localhost:3000
+# → MAGIC at: http://localhost:1234
 ```
 
 ## 🧑💻 How to Use
 
-1. Visit [http://localhost:3000](http://localhost:3000)
+1. Visit [http://localhost:1234](http://localhost:1234)
 2. **Sign up** or **Log in**
 3. Upload a policy PDF and get ready to chat with your document!
 4. Use the “Ask Questions About a Document” form—type your question, hit **Get Answer**.
