@@ -1,5 +1,3 @@
-Certainly! Below is an upgraded, polished, and more visually appealing version of the PolicyPal README. It’s structured for maximum reader engagement, clarity, and "classiness", making your project stand out:
-
 # ✨ PolicyPal: AI-Powered Policy Document Q&A ✨
 
 Unlock the full potential of your policy documents! **PolicyPal** lets you effortlessly upload your PDFs and ask complex, natural language questions. Powered by a **local Large Language Model (LLM)** and built with modern microservice architecture, PolicyPal delivers human-like, reasoned answers—instantly telling you if a claim is approved or rejected, and why.
