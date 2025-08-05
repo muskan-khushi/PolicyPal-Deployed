@@ -38,7 +38,6 @@ __pycache__/
 *.joblib
 *.h5
 *.hdf5
-models/
 checkpoints/
 weights/
 

@@ -3,25 +3,37 @@ import FormData from 'form-data';
 
 const ML_API_URL = 'http://localhost:8000/api/process';
 
-// Use 'export const' to export the function
 export const processDocument = async (req, res) => {
   try {
-    if (!req.file || !req.body.query) {
+    // Destructure file and query from the request object for cleaner code
+    const { file } = req;
+    const { query } = req.body;
+
+    // Now we can use 'file' and 'query' directly
+    if (!file || !query) {
       return res.status(400).json({ message: 'A PDF file and a query string are required.' });
     }
 
-    console.log('[Node.js] Received request. Preparing to call Python ML service...');
+    // Your debugging logs will now work correctly
+    console.log("--- Received File ---");
+    console.log(file.originalname);
+    console.log("--- Received Query ---");
+    console.log(query);
+
+    console.log('[Node.js] Received request. Calling Python ML service (this may take a while)...');
 
     const formData = new FormData();
-    formData.append('file', req.file.buffer, { filename: req.file.originalname });
-    formData.append('query', req.body.query);
-
+    console.log(formData);
+    formData.append('file', file.buffer, { filename: file.originalname });
+    formData.append('query', query); // Use the 'query' constant
+    console.log(formData);
     const mlResponse = await axios.post(ML_API_URL, formData, {
       headers: {
         ...formData.getHeaders(),
       },
+      timeout: 300000
     });
-
+    console.log(mlResponse);
     console.log('[Node.js] Success! Received JSON response from Python.');
     res.status(200).json(mlResponse.data);
 
@@ -30,7 +42,7 @@ export const processDocument = async (req, res) => {
     if (error.response) {
       res.status(error.response.status).json({ message: error.response.data.detail || 'Error from ML service.' });
     } else {
-      res.status(500).json({ message: 'Could not connect to the ML processing service.' });
+      res.status(500).json({ message: 'Could not connect to the ML processing service or the request timed out.' });
     }
   }
 };
