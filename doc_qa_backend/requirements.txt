@@ -13,6 +13,9 @@ pypdf
 # Data validation and API structure
 pydantic
 
+# Vector database
+chromadb
+
 # Web API server
 fastapi
 uvicorn
