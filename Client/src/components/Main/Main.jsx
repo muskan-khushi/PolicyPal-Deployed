@@ -1,39 +1,24 @@
 import React from "react";
 import "./Main.css";
-import Chat from "../Chat/Chat";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import DocumentQA from "../DocumentQA/DocumentQA";
 
 const Main = () => {
-  const sessionId = "session_" + Date.now();
-  const [messages, setMessages] = useState([]);
-
   return (
     <div className="main">
       <div className="nav">
         <p>PolicyPal</p>
-        <img src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Dog-512.png" alt="" />
+        <img src="https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Dog-512.png" alt="User Avatar" />
       </div>
 
-      <div className="main-container">
-        {messages.length === 0 && (
-          <div className="greet">
-            <img
-              src="https://cdn-icons-png.freepik.com/512/211/211283.png"
-              alt=""
-            />
-            <p>
-              <span>Hello!</span>
-            </p>
-            <p>How can I help you today?</p>
-          </div>
-        )}
+      {/* This container will center everything */}
+      <div className="main-content-area">
+        <div className="main-header">
+          <h1>Welcome to PolicyPal</h1>
+          <p className="subtitle">Ask questions about any policy document</p>
+        </div>
 
-        <Chat
-          sessionId={sessionId}
-          messages={messages}
-          setMessages={setMessages}
-        />
+        {/* This is the new home for our component */}
+        <DocumentQA />
       </div>
     </div>
   );

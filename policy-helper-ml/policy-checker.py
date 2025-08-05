@@ -94,39 +94,39 @@ def get_policy_decision(policy_doc: str, user_query: str) -> dict:
         }
     
 
-# # main execution block (part-3)
-# if __name__ == "__main__":
+# main execution block (part-3)
+if __name__ == "__main__":
   
-#     pdf_file_path = 'hackathon-policy.pdf'
+    pdf_file_path = 'hackathon-policy.pdf'
     
-#     print(f"--- Step 1: Reading text from '{pdf_file_path}' ---")
-#     policy_text = extract_text_from_pdf(pdf_file_path)
+    print(f"--- Step 1: Reading text from '{pdf_file_path}' ---")
+    policy_text = extract_text_from_pdf(pdf_file_path)
 
-#     if policy_text:
-#         print("PDF text extracted successfully!")
+    if policy_text:
+        print("PDF text extracted successfully!")
         
-#         print("\n--- Step 2: Running test queries against the policy ---")
+        print("\n--- Step 2: Running test queries against the policy ---")
         
-#         # test Case 1
-#         query1 = "I had an accident and was hospitalized for 3 days for a leg fracture surgery."
-#         print(f"\nSubmitting Query: '{query1}'")
-#         result1 = get_policy_decision(policy_text, query1)
-#         print("AI Response:", result1)
+        # test Case 1
+        query1 = "I had an accident and was hospitalized for 3 days for a leg fracture surgery."
+        print(f"\nSubmitting Query: '{query1}'")
+        result1 = get_policy_decision(policy_text, query1)
+        print("AI Response:", result1)
 
-#         # test Case 2
-#         query2 = "I have had this policy for 1.5 years and need to undergo cataract surgery."
-#         print(f"\nSubmitting Query: '{query2}'")
-#         result2 = get_policy_decision(policy_text, query2)
-#         print("AI Response:", result2)
+        # test Case 2
+        query2 = "I have had this policy for 1.5 years and need to undergo cataract surgery."
+        print(f"\nSubmitting Query: '{query2}'")
+        result2 = get_policy_decision(policy_text, query2)
+        print("AI Response:", result2)
 
-#         #test case 3
-#         query3 = "I want to claim expenses for my physiotherapy sessions."
-#         print(f"\nSubmitting Query: '{query3}'")
-#         result3 = get_policy_decision(policy_text, query3)
-#         print("AI Response:", result3)
+        #test case 3
+        query3 = "I want to claim expenses for my physiotherapy sessions."
+        print(f"\nSubmitting Query: '{query3}'")
+        result3 = get_policy_decision(policy_text, query3)
+        print("AI Response:", result3)
 
-#     else:
-#         print("Could not proceed. Please check the PDF file path and name.")
+    else:
+        print("Could not proceed. Please check the PDF file path and name.")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)

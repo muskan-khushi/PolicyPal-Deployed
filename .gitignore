@@ -1,0 +1,117 @@
+# Dependencies
+/node_modules
+/Client/node_modules
+/Server/node_modules
+/.pnp
+.pnp.js
+
+# Python Virtual Environments & Package Management
+/doc_qa_backend/venv
+/doc_qa_backend/env
+/doc_qa_backend/.venv
+/doc_qa_backend/.env
+venv/
+env/
+.venv/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Python Cache & Compiled Files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+*.so
+.Python
+
+# Large ML Libraries & Models (CRITICAL - These caused your GitHub error)
+*.dll
+*.lib
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+checkpoints/
+weights/
+
+# PyTorch/ML Specific (What caused your 240MB+ errors)
+torch/
+torchvision/
+transformers/
+tensorflow/
+sklearn/
+chromadb_rust_bindings*
+site-packages/torch/
+site-packages/tensorflow/
+
+# Build artifacts
+/dist
+/.parcel-cache
+/Client/dist
+/Client/.parcel-cache
+/Client/build
+/Client/.next
+/Server/dist
+/Server/build
+build/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env*.local
+.env.development
+.env.production
+.env.test
+/Server/.env
+/Client/.env.local
+/doc_qa_backend/.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
