@@ -1,0 +1,26 @@
+{
+  "name": "policypal",
+  "version": "1.0.0",
+  "description": "An LLM Trained Bot to resolve all your policy-related queries",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rupali, Shanvi, Muskan, Prisha",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "form-data": "^4.0.4",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.16.5",
+    "multer": "^2.0.2",
+    "node-fetch": "^3.3.2"
+  }
+}

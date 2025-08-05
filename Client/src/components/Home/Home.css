@@ -1,0 +1,161 @@
+/* Container fills the screen height and arranges content vertically */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.homepage-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+  font-family: Arial, sans-serif;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* Navbar styling */
+.navbar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15); 
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(20, 83, 20); /* Blue */
+  margin: 0;
+}
+
+.auth-buttons button {
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 30px;
+  border: 2px solid rgb(20, 83, 20);
+  background-color: transparent;
+  color: rgb(20, 83, 20);
+  transition: all 0.3s ease;
+}
+
+.auth-buttons button.btn-primary {
+  background-color: rgb(20, 83, 20);
+  color: white;
+  border-color: rgb(20, 83, 20);
+  border-radius: 30px;
+}
+
+.auth-buttons button.btn-outline:hover {
+  background-color: rgb(215, 216, 215);
+  /* color: white; */
+}
+
+.auth-buttons button.btn-primary:hover {
+  background-color: rgb(29, 50, 27);
+}
+
+/* Main content area, centered */
+
+.main-content {
+  position: relative;
+  /* ...existing code... */
+}
+
+.main-content::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); /* black overlay, adjust alpha for opacity */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.main-content > * {
+  position: relative;
+  z-index: 2;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  
+  background-image: url('homebgimg.jpg'); /* path is relative to public folder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+.main-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 6px 6px 6px 3px black;
+  font-weight: bolder;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+.main-content p {
+  max-width: 600px;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.679);
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+}
+
+.large-btn {
+  font-size: 1.25rem;
+  padding: 0.75rem 2rem;
+  background-color: rgb(20, 83, 20);
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+}
+
+.large-btn:hover{
+  background-color: rgb(29, 50, 27);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18); /* Add this line */
+  border-radius: 40px;
+}
+
+/* Footer styling */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  background-color: rgb(20, 83, 20);
+  color: white;
+  font-size: 0.875rem;
+}
