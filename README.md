@@ -1,111 +1,157 @@
-# ✨ PolicyPal: AI-Powered Policy Document Q&A ✨
+# 🛡️ PolicyPal پال  
+**Demystifying Insurance Policies with AI**
 
-Unlock the full potential of your policy documents! **PolicyPal** lets you effortlessly upload your PDFs and ask complex, natural language questions. Powered by a **local Large Language Model (LLM)** and built with modern microservice architecture, PolicyPal delivers human-like, reasoned answers—instantly telling you if a claim is approved or rejected, and why.
+PolicyPal is an intelligent web application designed to decode complex insurance documents using the power of artificial intelligence. Upload any policy PDF, ask your question in plain English, and receive a clear, fact-grounded answer — instantly, accurately, and transparently.
 
-## 🚀 Why PolicyPal?
+🔗 **Live Demo:** [Try PolicyPal Now](https://policypal-client-uzht.vercel.app/)
 
-- **Instant Answers:** No more searching through dense PDFs.
-- **Smart & Secure:** Local AI keeps your documents private.
-- **Seamless Experience:** Upload, ask, and get actionable responses.
-- **Modern Tech Stack:** React, Node.js, FastAPI, LangChain, and Ollama for top performance.
+---
 
-## 🛠️ Architecture Overview
+## ✨ Why PolicyPal?
 
-| Component          | Description                                                                                      |
-|--------------------|--------------------------------------------------------------------------------------------------|
-| 🎨 **Frontend**    | Elegant React UI for authentication, uploads, and Q&A.                                           |
-| 🚪 **Backend**     | Node.js + Express server: Orchestrates API calls, authentication, and database management.       |
-| 🧠 **ML Service**  | Python (FastAPI, LangChain): Handles the AI magic using local LLMs via Ollama.                   |
+Understanding insurance policies shouldn't require legal expertise. PolicyPal bridges the gap between dense insurance jargon and everyday clarity, powered by Retrieval-Augmented Generation (RAG) and best-in-class LLM APIs.
 
-**Data Flow:** React Client ➡️ Node.js Server ➡️ Python ML Service
+---
 
-## 🗝️ Prerequisites
+## 📖 The Story: From Ambition to Reality
 
-Make sure your toolkit is ready:
-- **Node.js** v18.0+ ([Download](https://nodejs.org/))
-- **Python** v3.10+ ([Download](https://python.org/))
-- **Ollama** (for local LLMs) ([Download](https://ollama.com/))
+This repository contains the fully deployed version of PolicyPal — a refined result of technical agility and architectural decisions made during development.
 
-## 🚦 Quickstart Guide
+Our original vision centered around a fully self-hosted AI pipeline powered by Google's open-source **Gemma** model. While we successfully built this system (available [here](https://github.com/Rupali2507/PolicyPal)), deployment limitations on available infrastructure prompted a strategic pivot.
 
-**Clone and Prepare:**
+To ensure a seamless user experience, we transitioned to cloud-based APIs for inference and embeddings, allowing us to showcase the application's full potential — without compromising its logic, responsiveness, or integrity.
+
+> 💡 Our self-hosted version remains the technical foundation of this project. Explore it here:  
+> [🔗 Gemma Architecture (Self-Hosted)](https://github.com/Rupali2507/PolicyPal)
+
+---
+
+## 🏗️ Architecture Overview (Deployed Version)
+
+This version follows a clean, modular, three-tier microservice architecture:
+
+### 🌐 Frontend (Client)
+- **Framework:** React.js  
+- **Role:** Provides a responsive, elegant interface for file uploads and user queries  
+- **Hosting:** Vercel  
+
+### 🛠️ Backend (Server)
+- **Framework:** Node.js (Express.js)  
+- **Role:** Serves as a secure API gateway between the client and the AI service  
+- **Hosting:** Render  
+
+### 🧠 AI Service (doc_qa_backend)
+- **Framework:** FastAPI (Python)  
+- **Role:** Core document question-answering logic using RAG  
+- **APIs Used:**  
+  - **Inference:** Groq (Llama 3)  
+  - **Embeddings:** Cohere  
+- **Hosting:** Render  
+
+---
+
+## 🌟 Key Features
+
+| Feature | Description |
+|--------|-------------|
+| 📄 **PDF Analysis** | Parses and processes complex insurance policy documents |
+| 🗣️ **Natural Language Q&A** | Accepts user queries in plain English — no jargon required |
+| 🛡️ **Fact-Grounded Answers** | Each response is backed by actual excerpts from the document |
+| 🔍 **Transparent Reasoning** | Reveals which parts of the policy informed the answer |
+| 🧱 **Structured Output** | Uses Pydantic models for predictable, validated AI output |
+| 💻 **Modern UI** | Clean, responsive, and intuitive design |
+
+---
+
+## 🧪 Running Locally
+
+Set up the entire system on your machine in minutes.
+
+### 🧰 Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or later)  
+- [Python](https://www.python.org/) (v3.10 or later)  
+- API Keys from:
+  - [Groq](https://groq.com/)
+  - [Cohere](https://cohere.com/)
+
+---
+
+### 🔧 Step 1: Clone the Repository
+
 ```bash
-git clone 
-cd PolicyPal
+git clone https://github.com/muskan-khushi/PolicyPal-Deployed.git
+cd PolicyPal-Deployed
 ```
 
-### 1️⃣ ML Service (AI Engine)
+Create an environment file for the AI service:
+
+```env
+# /doc_qa_backend/.env
+GROQ_API_KEY="your_groq_api_key"
+COHERE_API_KEY="your_cohere_api_key"
+```
+
+---
+
+### 🧠 Step 2: Start the AI Service (FastAPI)
 
 ```bash
 cd doc_qa_backend
 python -m venv venv
-# Windows:
+# On Windows:
 venv\Scripts\activate
-# macOS/Linux:
-# source venv/bin/activate
+# On Mac/Linux:
+source venv/bin/activate
 
 pip install -r requirements.txt
-
-# Grab the AI model (one-time only)
-ollama pull gemma:2b
+uvicorn app.main:app --reload --port 8000
 ```
 
-### 2️⃣ Node.js Backend
+> Service runs at: `http://localhost:8000`
+
+---
+
+### 🛡️ Step 3: Start the Backend Server (Express.js)
 
 ```bash
-cd ../Server
+cd ../server
 npm install
+npm start
 ```
-**Configure Environment:**
-- Copy `.env.example` ➡️ `.env`
-- Fill in:
-    - `MONGODB_URI=mongodb+srv://:@cluster.mongodb.net/`
-    - `JWT_SECRET=your_super_secret_key_for_jwt`
-    - `PORT=5000`
-    - `NODE_ENV=development`
 
-### 3️⃣ React Frontend
+> Server runs at: `http://localhost:5000`
+
+---
+
+### 💻 Step 4: Start the Frontend Client (React)
 
 ```bash
-cd ../Client
+cd ../client
 npm install
-```
-
-## 🏃 Run the Trio
-
-Fire up each service **in its own terminal** for smooth operation!
-
-
-**Terminal 2: Node.js Backend**
-```bash
-cd Server
 npm start
-# → API at: http://localhost:5000
 ```
 
-**Terminal 3: React Frontend**
-```bash
-cd Client
-npm start
-# → MAGIC at: http://localhost:1234
-```
+> App opens at: `http://localhost:1234`
 
-## 🧑💻 How to Use
+## 🎯 Conclusion
+PolicyPal represents the intersection of practical AI engineering and real-world problem solving. What started as an ambitious self-hosted AI project evolved into a production-ready application that demonstrates both technical depth and deployment pragmatism.
+Key Achievements:
 
-1. Visit [http://localhost:1234](http://localhost:1234)
-2. **Sign up** or **Log in**
-3. Upload a policy PDF and get ready to chat with your document!
-4. Use the “Ask Questions About a Document” form—type your question, hit **Get Answer**.
-5. Get instant, intelligent, clause-level responses.
+✅ End-to-end RAG implementation from document processing to response generation
+✅ Production deployment across multiple cloud platforms
+✅ Architectural flexibility - seamless transition from self-hosted to cloud APIs
+✅ User-centric design - complex insurance logic translated into clear, actionable insights
 
-## 💡 Pro Tips
+This project showcases not just the ability to build sophisticated AI systems, but the engineering judgment to adapt and deploy them effectively in real-world constraints. PolicyPal makes insurance accessible, one query at a time.
 
-- For best speed & privacy, use on a powerful local machine.
-- Combine with custom LLMs on Ollama for tailored industry domains.
+## 🚀 The Visionary Team
 
-## 🎉 Happy Building with PolicyPal!
+| Name | Role | GitHub |
+|------|------|--------|
+| [Rupali Kumari](https://github.com/Rupali2507) | Team Leader & Backend Developer | 🔗 [@Rupali2507](https://github.com/Rupali2507) |
+| [Shanvi Dixit](https://github.com/shanvid19)   | Frontend Developer              | 🔗 [@shanvid19](https://github.com/shanvid19)   |
+| [Prisha Garg](https://github.com/prishagarg)   | ML Engineer                     | 🔗 [@prishagarg](https://github.com/prishagarg) |
+| [Muskan](https://github.com/muskan-khushi)     | ML Engineer (yours truly) 💫     | 🔗 [@muskan-khushi](https://github.com/muskan-khushi) |
 
-From insurance claim reviews to legal audits, **PolicyPal** makes understanding your policies effortless, accurate, and even a bit fun.  
-**Cut through the jargon. Get to your answer. Be policy-smart—with PolicyPal!**
 
-*Unleash the power of AI on your documents—because you deserve answers as classy and sharp as you are.*
+Built with ❤️ and lots of ☕
