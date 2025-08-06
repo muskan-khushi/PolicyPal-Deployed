@@ -5,7 +5,7 @@ langchain-core
 
 # Local LLM and embedding models
 ollama
-sentence-transformers
+langchain-cohere
 
 # PDF document handling
 pypdf
@@ -22,3 +22,6 @@ uvicorn
 
 # File upload support for FastAPI
 python-multipart
+
+langchain-groq
+python-dotenv

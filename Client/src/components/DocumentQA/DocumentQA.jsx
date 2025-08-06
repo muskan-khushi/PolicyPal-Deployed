@@ -8,7 +8,9 @@ const DocumentQA = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const API_ENDPOINT = 'http://localhost:5000/api/documents/process';
+  // --- THIS IS THE FINAL FIX ---
+  const API_ENDPOINT = `${import.meta.env.VITE_API_URL}/api/documents/process`;
+  // --------------------------
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -77,7 +79,6 @@ const DocumentQA = () => {
           <div className={`result-display ${result.decision.toLowerCase().replace(/\s+/g, '-')}`}>
             <h3>Analysis Complete</h3>
             <p className="narrative">{result.narrative_response}</p>
-            
             {result.justification && result.justification.length > 0 && (
               <div className="justification-section">
                 <h4>Supporting Clauses from Document:</h4>

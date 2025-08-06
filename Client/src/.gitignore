@@ -1,0 +1,14 @@
+# Dependencies
+/node_modules
+
+# Build artifacts & cache
+/dist
+/.parcel-cache
+
+# Local Environment Variables
+.env
+.env.local
+
+# IDE & OS specific
+.vscode/
+.DS_Store
