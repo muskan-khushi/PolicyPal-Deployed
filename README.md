@@ -1,4 +1,4 @@
-# 🛡️ PolicyPal پال  
+# ✨ PolicyPal: AI-Powered Policy Document Q&A ✨
 **Demystifying Insurance Policies with AI**
 
 PolicyPal is an intelligent web application designed to decode complex insurance documents using the power of artificial intelligence. Upload any policy PDF, ask your question in plain English, and receive a clear, fact-grounded answer — instantly, accurately, and transparently.
